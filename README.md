@@ -1,3 +1,3 @@
 # neutralization
-Repository for a 3D solver modelling a neutralization reaction
-Please first compile Cphi class, then chemReac class and at the end the executable solver.
+3D solver that models neutralization reactions (in this case is meant for NaOH and HCl)
+Please compile first Cphi class, then chemReac class and, at the end, the executable solver (twoLiquidMixingFoamNeutralization)
