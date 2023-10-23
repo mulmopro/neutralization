@@ -1,0 +1,22 @@
+#!/bin/sh
+cd ${0%/*} || exit 1    # Run from this directory
+
+# Source tutorial clean functions
+. $WM_PROJECT_DIR/bin/tools/CleanFunctions
+
+# Remove surface
+rm -f ./T_mixer ./*.obj > /dev/null 2>&1
+rm -rf constant/extendedFeatureEdgeMesh > /dev/null 2>&1
+rm -f constant/triSurface/flange.eMesh > /dev/null 2>&1
+rm -f constant/polyMesh/boundary
+rm constant/triSurface/walls.eMesh
+rm 0/nSurfaceLayers
+rm 0/thickness
+rm 0/thicknessFraction
+# rm constant/triSurface/badFaces
+# rm constant/triSurface/illegalFaces
+# rm constant/triSurface/problemFaces
+runApplication foamCleanTutorials
+cleanCase
+clear
+#------------------------------------------------------------------------------

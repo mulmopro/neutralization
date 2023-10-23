@@ -1,0 +1,190 @@
+#!/bin/bash
+
+# Geometrical features
+r=0.001   #T-mixer Radius
+H=0.04     #T-mixer Height
+field=alpha.A
+
+# sampleDict if deleted if present
+cd system
+
+for d in *
+do
+  if [ "$d" = "sampleDict" ] 
+  then
+      rm sampleDict
+  fi
+done
+
+# sampleDict is created
+    echo "/*--------------------------------*- C++ -*----------------------------------*\\" > sampleDict
+    echo "| =========                |                                                  |"  >> sampleDict
+    echo "| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox            |" >> sampleDict
+    echo "|  \\    /   O peration     | Version:  2.1.x                                  |" >> sampleDict
+    echo "|   \\  /    A nd           | Web:      www.OpenFOAM.org                       |" >> sampleDict
+    echo "|    \\/     M anipulation  |                                                  |" >> sampleDict 
+    echo "\*---------------------------------------------------------------------------*/" >> sampleDict
+    echo "FoamFile" >> sampleDict
+    echo "{" >> sampleDict
+    echo "    version     2.0;" >> sampleDict
+    echo "    format      ascii;" >> sampleDict
+    echo "    class       dictionary;" >> sampleDict
+    echo "    object      sampleDict;" >> sampleDict
+    echo "}" >> sampleDict
+    echo "// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *//" >> sampleDict
+    echo "type sets;  " >> sampleDict
+    echo "setFormat raw;" >> sampleDict
+    echo " " >> sampleDict
+    echo "surfaceFormat raw;" >> sampleDict
+    echo "formatOptions" >> sampleDict
+    echo "{" >> sampleDict
+    echo "    ensight" >> sampleDict
+    echo "    {" >> sampleDict
+    echo "        format  ascii;" >> sampleDict
+    echo "    }" >> sampleDict
+    echo "}" >> sampleDict
+    echo " " >> sampleDict
+    echo "interpolationScheme cell;" >> sampleDict
+    echo " " >> sampleDict
+    echo "fields" >> sampleDict
+    echo "(" >> sampleDict
+    echo "    $field" >> sampleDict  # Can be changed with all volScalarField
+    echo ");" >> sampleDict
+    echo " " >> sampleDict
+    echo "sets" >> sampleDict
+    echo "(" >> sampleDict
+
+# number of lines per section and number of sections ( can be changed! )
+N=6  # horizontal sections number
+M=39  # vertical sections number
+deltax=`echo "scale=10; 2.0*$r/($N+1)" | bc`
+
+# xPosition array definition
+for ((i=1; i<=$N; i+=1))
+do
+   x[$i]=`echo "scale=10; -$r+$deltax*$i" | bc | sed 's/\./0./'`
+   #echo "${x[$i]}"
+done
+
+f=1.0 #fattore di smorzamento
+
+# zPosition array definition
+for ((i=1; i<=$M; i+=1))
+do
+   y[$i]=`echo "scale=10; -$H*e(l($i/($M+1))*$f)" | bc -l | sed 's/\./0./'`
+   echo "${y[$i]}"
+done
+
+# zPosition for plotting
+for ((i=1; i<=$M; i+=1))
+do
+   yP[$i]=`echo "scale=10; $H*e(l($i/($M+1))*$f)" | bc -l | sed 's/\./0./'`
+done
+
+k=0
+
+for ((j=1; j<=$M; j+=1))
+do 
+   for ((i=1; i<=$N; i+=1))
+   do
+      k=$((k+1))
+      echo "      line_y$k" >> sampleDict
+      echo "      {" >> sampleDict
+      echo "        type        lineUniform;" >> sampleDict
+      echo "        axis        distance;" >> sampleDict
+      echo "        start       (`echo "scale=10; -$r+$deltax*$i" | bc | sed 's/\./0./'` `echo "-$H*e(l($j/($M+1))*$f)" | bc -l | sed 's/\./0./'` `echo "scale=10; sqrt($r^2-(-$r+$deltax*$i)^2)" | bc | sed 's/\./0./'`);" >> sampleDict
+      echo "        end         (`echo "scale=10; -$r+$deltax*$i" | bc | sed 's/\./0./'` `echo "-$H*e(l($j/($M+1))*$f)" | bc -l | sed 's/\./0./'` `echo "scale=10; -sqrt($r^2-(-$r+$deltax*$i)^2)" | bc | sed 's/\./0./'`);" >> sampleDict
+      echo "        nPoints     150;" >> sampleDict
+      echo "      }" >> sampleDict
+      echo " " >> sampleDict
+   done 
+done
+    echo ");" >> sampleDict
+    echo "// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *//" >> sampleDict
+
+# postProcessing directory enviroment
+cd ../postProcessing
+
+# Script for position averaging: postProcessing is launched to run sampleDict case
+
+for d in *
+do
+  if [ "$d" = "sampleDict" ] 
+  then
+       rm -r sampleDict
+  fi
+done
+
+# Case directory enviroment
+cd ..
+
+postProcess -func sampleDict -latestTime
+cd postProcessing/sampleDict
+
+# Total number of displayed sub-directories is stored
+L=$(ls -A | wc -l)
+C=0
+
+for d in *
+do
+  C=$((C+1))
+  if [ $C -eq $L ]
+  then
+      cd $d
+  fi
+done
+
+
+i=1  # counts the vertical sections number
+j=0  # counts the horizontal sections number
+for ((d=1; d<=$k; d+=1))
+do
+    # change .txt format file
+    sed -i 's/\./,/g' "line_y"$d"_"$field".xy"
+    if [ $d -eq 1 ]
+    then
+    	echo -n "# y - coordinate || " > averageProfile
+        echo "Averaged $field  #" >> averageProfile
+        echo "#----------------------------------#" >> averageProfile
+    fi
+    j=$((j+1))
+    
+    # generates the 1D plot
+    echo -n "${x[$j]} " >> concentration$i
+    awk '{total+=$2} END {print total/NR}' "line_y"$d"_"$field".xy" >> concentration$i
+    
+    if [ $((d%N)) -eq 0 ]
+    then 
+         echo -n "${yP[$i]} " >> averageProfile
+         awk '{total+=$2} END {print total/NR}' "concentration$i" >> averageProfile
+         if [ $i -eq 1 ]
+         then
+		 for ((m=$i; m<=$d; m+=1))
+		 do
+		 	cat "line_y"$m"_"$field".xy" >> section$i
+		 done
+	 else
+	 	for ((m=$((i+N)); m<=$d; m+=1))
+		do
+			cat "line_y"$m"_"$field".xy" >> section$i
+		done
+	 fi
+	 sed -i 's/\,/./g' section$i
+	 sed -i 's/\,/./g' concentration$i
+         i=$((i+1))
+         j=0
+    fi
+done
+
+sed -i 's/\,/./g' averageProfile
+
+cd ../../../
+for d in *
+do
+  if [ "$d" = "pythonPlots" ] 
+  then
+       rm -r pythonPlots
+  fi
+done
+cd pythonScript
+python3 visualizeCFDvsExp.py

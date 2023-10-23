@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# Main script for running simulations
+
+. $WM_PROJECT_DIR/bin/tools/RunFunctions
+runApplication blockMesh
+runApplication surfaceFeatures
+runApplication decomposePar
+foamJob -parallel -screen snappyHexMesh -overwrite
+reconstructParMesh -constant
+rm -r processor*
+rm log*
+runApplication decomposePar -force
+runParallel twoLiquidMixingFoam
+runApplication reconstructPar -newTimes

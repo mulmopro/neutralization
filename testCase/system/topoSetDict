@@ -1,0 +1,92 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  8
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      topoSetDict;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+actions
+(   
+    {
+        name    T_mixer_walls;
+        type    faceSet;
+        action  new;
+        source  patchToFace;
+        sourceInfo
+        {
+            name walls;
+        }
+    }
+    {
+        name    T_mixer_inlet_MgCl2;
+        type    faceSet;
+        action  new;
+        source  patchToFace;
+        sourceInfo
+        {
+           name inlet_MgCl2
+        }
+    }
+    {
+        name    T_mixer_inlet_NaOH;
+        type    faceSet;
+        action  new;
+        source  patchToFace;
+        sourceInfo
+        {
+          name inlet_NaOH;
+        }
+    }
+    {
+        name    T_mixer_outlet;
+        type    faceSet;
+        action  new;
+        source  patchToFace;
+        sourceInfo
+        {
+           name inlet_NaOH;
+        }
+    }
+    {
+        name    region_NaOH;
+        type    cellSet;
+        action  new;
+        source  boxToCell;
+        sourceInfo
+        {
+           box (0.001499 -0.0025 -0.004) (0.031 0.0025 0.003);;
+        }
+    }
+    {
+        name    region_MgCl2;
+        type    cellSet;
+        action  new;
+        source  boxToCell;
+        sourceInfo
+        {
+           box (-0.04 -0.0025 -0.004) (-0.0015 0.0025 0.003);
+        }
+    }
+    {
+        name    region_active;
+        type    cellSet;
+        action  new;
+        source  boxToCell;
+        sourceInfo
+        {
+           box (-0.00150001 -0.0015001 -0.6001) (0.00150001 0.00150001 0.003);
+        }
+    }
+);
+
+// ************************************************************************* //

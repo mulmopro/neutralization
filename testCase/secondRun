@@ -1,0 +1,10 @@
+#!/bin/sh
+rm -r processor*
+rm -r log*
+
+. $WM_PROJECT_DIR/bin/tools/RunFunctions
+application=$(getApplication)
+
+runApplication decomposePar -force
+runParallel $application
+runApplication reconstructPar -newTimes

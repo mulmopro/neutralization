@@ -1,0 +1,39 @@
+/*--------------------------------*- C++ -*----------------------------------*  =========                 |
+  \      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \    /   O peration     | Website:  https://openfoam.org
+    \  /    A nd           | Version:  8
+     \/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    constant;
+    object      betaPDFProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+// water density @ 25°C 997 //
+// It's for reaction (A + rB):
+// 1 for neutralization (HCl + NaOH)
+// 2 for precipitation (MgCl2 + 2NaOH)
+activityCoeff true;
+
+stoichiometricRatio 2; 
+
+Concentrations
+{
+	A	0.125;
+	B	0.25;
+}
+
+Diffusivity
+{
+	ions	2e-9;
+}
+
+waterDensity 997;
+
+
+// ************************************************************************* //
