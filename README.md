@@ -9,3 +9,16 @@ testCase: please run ./Allrun (this command generates the circular cross-section
 The experimental setup is reported:
 ![image](https://github.com/mulmopro/neutralization/assets/102947817/dece5b56-0b70-4d40-bc49-6329281196e9)
 Two geometries are investigated both experimentally and numerically: the former is a square cross-sectional T-mixer (T<sub>sq</sub>), the latter is a circular cross-sectional T-mixer (T<sub>cr</sub>)
+
+# Reference
+Should you use these codes for your own research, we would greatly appreciate if you could cite our work:
+
+@article{Battaglia2023,
+   author = {G. Battaglia and S. Romano and A. Raponi and F. Volpe and L. Bellanca and M. Ciofalo and D. Marchisio and A. Cipollina and G. Micale and A. Tamburini},
+   doi = {10.1016/j.cherd.2023.11.056},
+   issn = {02638762},
+   journal = {Chemical Engineering Research and Design},
+   month = {11},
+   title = {Mixing phenomena in Circular and Rectangular cross-sectional T-mixers: experimental and numerical assessment},
+   year = {2023},
+}
