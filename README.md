@@ -1,4 +1,4 @@
-# Neutralization in a square/circular cross-sectional Tmixer
+# Neutralization in square/circular cross-sectional Tmixer
 3D solver that models dilution and neutralization reactions (in this case is tailored for NaOH and HCl)
 
 twoLiquidMixingFoamNeutralization: Please compile first "Cphi" class, then "chemReac" class and, at the end, the executable solver "twoLiquidMixingFoamNeutralization".
