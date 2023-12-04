@@ -8,7 +8,7 @@ testCase: please run ./Allrun (this command generates the circular cross-section
 # Experimental setup
 The experimental setup is reported:
 ![image](https://github.com/mulmopro/neutralization/assets/102947817/dece5b56-0b70-4d40-bc49-6329281196e9)
-Two geometries are investigated both experimentally and numerically: the former is a square cross-sectional T-mixer (T<sub>sq</sub>), the latter is a circular cross-sectional T-mixer (T<sub>cr</sub>)
+Two geometries (D<sub>h</sub> = 3 mm) are investigated both experimentally and numerically: the former is a square cross-sectional T-mixer (T<sub>sq</sub>), the latter is a circular cross-sectional T-mixer (T<sub>cr</sub>)
 
 # Reference
 Should you use these codes for your own research, we would greatly appreciate if you could cite our work:
