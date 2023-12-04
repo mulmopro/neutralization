@@ -16,3 +16,10 @@ preferred-citation:
     given-names: "Battaglia"
   doi: "https://doi.org/10.1016/j.cherd.2023.11.056"
   journal: "Chemical Engineering Research and Design"
+  month: 11
+  start: 1 # First page number
+  end: 10 # Last page number
+  title: "My awesome research software"
+  issue: 1
+  volume: 1
+  year: 2021
