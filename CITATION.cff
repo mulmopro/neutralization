@@ -1,8 +1,8 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
 authors:
-- family-names: "Antonello"
-  given-names: "Raponi"
+- family-names: "Raponi"
+  given-names: "Antonello"
   orcid: "https://orcid.org/0000-0002-3951-2308"
 title: "Mixing phenomena description through β-PDF"
 version: 2.0
@@ -12,9 +12,9 @@ url: "https://github.com/mulmopro/neutralization"
 preferred-citation:
   type: article
   authors:
-  - family-names: "Giuseppe"
-    given-names: "Battaglia"
-  doi: "https://doi.org/10.1016/j.cherd.2023.11.056"
+  - family-names: "Battaglia"
+    given-names: "Giuseppe"
+  doi: "10.1016/j.cherd.2023.11.056"
   journal: "Chemical Engineering Research and Design"
   month: 11
   start: 1 # First page number
