@@ -1,0 +1,938 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                |                                                  |
+| \      /  F ield         | OpenFOAM: The Open Source CFD Toolbox            |
+|  \    /   O peration     | Version:  2.1.x                                  |
+|   \  /    A nd           | Web:      www.OpenFOAM.org                       |
+|    \/     M anipulation  |                                                  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      sampleDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *//
+type sets;  
+setFormat raw;
+ 
+surfaceFormat raw;
+formatOptions
+{
+    ensight
+    {
+        format  ascii;
+    }
+}
+ 
+interpolationScheme cellPoint;
+ 
+fields
+(
+    Reynolds
+);
+ 
+sets
+(
+      line_y1
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0005940594);
+        end         (0 -0.0015  -0.0005940594);
+        nPoints     5000;
+      }
+ 
+      line_y2
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0011881188);
+        end         (0 -0.0015  -0.0011881188);
+        nPoints     5000;
+      }
+ 
+      line_y3
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0017821782);
+        end         (0 -0.0015  -0.0017821782);
+        nPoints     5000;
+      }
+ 
+      line_y4
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0023762376);
+        end         (0 -0.0015  -0.0023762376);
+        nPoints     5000;
+      }
+ 
+      line_y5
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0029702970);
+        end         (0 -0.0015  -0.0029702970);
+        nPoints     5000;
+      }
+ 
+      line_y6
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0035643564);
+        end         (0 -0.0015  -0.0035643564);
+        nPoints     5000;
+      }
+ 
+      line_y7
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0041584158);
+        end         (0 -0.0015  -0.0041584158);
+        nPoints     5000;
+      }
+ 
+      line_y8
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0047524752);
+        end         (0 -0.0015  -0.0047524752);
+        nPoints     5000;
+      }
+ 
+      line_y9
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0053465346);
+        end         (0 -0.0015  -0.0053465346);
+        nPoints     5000;
+      }
+ 
+      line_y10
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0059405940);
+        end         (0 -0.0015  -0.0059405940);
+        nPoints     5000;
+      }
+ 
+      line_y11
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0065346534);
+        end         (0 -0.0015  -0.0065346534);
+        nPoints     5000;
+      }
+ 
+      line_y12
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0071287128);
+        end         (0 -0.0015  -0.0071287128);
+        nPoints     5000;
+      }
+ 
+      line_y13
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0077227722);
+        end         (0 -0.0015  -0.0077227722);
+        nPoints     5000;
+      }
+ 
+      line_y14
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0083168316);
+        end         (0 -0.0015  -0.0083168316);
+        nPoints     5000;
+      }
+ 
+      line_y15
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0089108910);
+        end         (0 -0.0015  -0.0089108910);
+        nPoints     5000;
+      }
+ 
+      line_y16
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0095049504);
+        end         (0 -0.0015  -0.0095049504);
+        nPoints     5000;
+      }
+ 
+      line_y17
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0100990098);
+        end         (0 -0.0015  -0.0100990098);
+        nPoints     5000;
+      }
+ 
+      line_y18
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0106930692);
+        end         (0 -0.0015  -0.0106930692);
+        nPoints     5000;
+      }
+ 
+      line_y19
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0112871286);
+        end         (0 -0.0015  -0.0112871286);
+        nPoints     5000;
+      }
+ 
+      line_y20
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0118811880);
+        end         (0 -0.0015  -0.0118811880);
+        nPoints     5000;
+      }
+ 
+      line_y21
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0124752474);
+        end         (0 -0.0015  -0.0124752474);
+        nPoints     5000;
+      }
+ 
+      line_y22
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0130693068);
+        end         (0 -0.0015  -0.0130693068);
+        nPoints     5000;
+      }
+ 
+      line_y23
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0136633662);
+        end         (0 -0.0015  -0.0136633662);
+        nPoints     5000;
+      }
+ 
+      line_y24
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0142574256);
+        end         (0 -0.0015  -0.0142574256);
+        nPoints     5000;
+      }
+ 
+      line_y25
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0148514850);
+        end         (0 -0.0015  -0.0148514850);
+        nPoints     5000;
+      }
+ 
+      line_y26
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0154455444);
+        end         (0 -0.0015  -0.0154455444);
+        nPoints     5000;
+      }
+ 
+      line_y27
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0160396038);
+        end         (0 -0.0015  -0.0160396038);
+        nPoints     5000;
+      }
+ 
+      line_y28
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0166336632);
+        end         (0 -0.0015  -0.0166336632);
+        nPoints     5000;
+      }
+ 
+      line_y29
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0172277226);
+        end         (0 -0.0015  -0.0172277226);
+        nPoints     5000;
+      }
+ 
+      line_y30
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0178217820);
+        end         (0 -0.0015  -0.0178217820);
+        nPoints     5000;
+      }
+ 
+      line_y31
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0184158414);
+        end         (0 -0.0015  -0.0184158414);
+        nPoints     5000;
+      }
+ 
+      line_y32
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0190099008);
+        end         (0 -0.0015  -0.0190099008);
+        nPoints     5000;
+      }
+ 
+      line_y33
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0196039602);
+        end         (0 -0.0015  -0.0196039602);
+        nPoints     5000;
+      }
+ 
+      line_y34
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0201980196);
+        end         (0 -0.0015  -0.0201980196);
+        nPoints     5000;
+      }
+ 
+      line_y35
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0207920790);
+        end         (0 -0.0015  -0.0207920790);
+        nPoints     5000;
+      }
+ 
+      line_y36
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0213861384);
+        end         (0 -0.0015  -0.0213861384);
+        nPoints     5000;
+      }
+ 
+      line_y37
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0219801978);
+        end         (0 -0.0015  -0.0219801978);
+        nPoints     5000;
+      }
+ 
+      line_y38
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0225742572);
+        end         (0 -0.0015  -0.0225742572);
+        nPoints     5000;
+      }
+ 
+      line_y39
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0231683166);
+        end         (0 -0.0015  -0.0231683166);
+        nPoints     5000;
+      }
+ 
+      line_y40
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0237623760);
+        end         (0 -0.0015  -0.0237623760);
+        nPoints     5000;
+      }
+ 
+      line_y41
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0243564354);
+        end         (0 -0.0015  -0.0243564354);
+        nPoints     5000;
+      }
+ 
+      line_y42
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0249504948);
+        end         (0 -0.0015  -0.0249504948);
+        nPoints     5000;
+      }
+ 
+      line_y43
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0255445542);
+        end         (0 -0.0015  -0.0255445542);
+        nPoints     5000;
+      }
+ 
+      line_y44
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0261386136);
+        end         (0 -0.0015  -0.0261386136);
+        nPoints     5000;
+      }
+ 
+      line_y45
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0267326730);
+        end         (0 -0.0015  -0.0267326730);
+        nPoints     5000;
+      }
+ 
+      line_y46
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0273267324);
+        end         (0 -0.0015  -0.0273267324);
+        nPoints     5000;
+      }
+ 
+      line_y47
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0279207918);
+        end         (0 -0.0015  -0.0279207918);
+        nPoints     5000;
+      }
+ 
+      line_y48
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0285148512);
+        end         (0 -0.0015  -0.0285148512);
+        nPoints     5000;
+      }
+ 
+      line_y49
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0291089106);
+        end         (0 -0.0015  -0.0291089106);
+        nPoints     5000;
+      }
+ 
+      line_y50
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0297029700);
+        end         (0 -0.0015  -0.0297029700);
+        nPoints     5000;
+      }
+ 
+      line_y51
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0302970294);
+        end         (0 -0.0015  -0.0302970294);
+        nPoints     5000;
+      }
+ 
+      line_y52
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0308910888);
+        end         (0 -0.0015  -0.0308910888);
+        nPoints     5000;
+      }
+ 
+      line_y53
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0314851482);
+        end         (0 -0.0015  -0.0314851482);
+        nPoints     5000;
+      }
+ 
+      line_y54
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0320792076);
+        end         (0 -0.0015  -0.0320792076);
+        nPoints     5000;
+      }
+ 
+      line_y55
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0326732670);
+        end         (0 -0.0015  -0.0326732670);
+        nPoints     5000;
+      }
+ 
+      line_y56
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0332673264);
+        end         (0 -0.0015  -0.0332673264);
+        nPoints     5000;
+      }
+ 
+      line_y57
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0338613858);
+        end         (0 -0.0015  -0.0338613858);
+        nPoints     5000;
+      }
+ 
+      line_y58
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0344554452);
+        end         (0 -0.0015  -0.0344554452);
+        nPoints     5000;
+      }
+ 
+      line_y59
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0350495046);
+        end         (0 -0.0015  -0.0350495046);
+        nPoints     5000;
+      }
+ 
+      line_y60
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0356435640);
+        end         (0 -0.0015  -0.0356435640);
+        nPoints     5000;
+      }
+ 
+      line_y61
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0362376234);
+        end         (0 -0.0015  -0.0362376234);
+        nPoints     5000;
+      }
+ 
+      line_y62
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0368316828);
+        end         (0 -0.0015  -0.0368316828);
+        nPoints     5000;
+      }
+ 
+      line_y63
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0374257422);
+        end         (0 -0.0015  -0.0374257422);
+        nPoints     5000;
+      }
+ 
+      line_y64
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0380198016);
+        end         (0 -0.0015  -0.0380198016);
+        nPoints     5000;
+      }
+ 
+      line_y65
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0386138610);
+        end         (0 -0.0015  -0.0386138610);
+        nPoints     5000;
+      }
+ 
+      line_y66
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0392079204);
+        end         (0 -0.0015  -0.0392079204);
+        nPoints     5000;
+      }
+ 
+      line_y67
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0398019798);
+        end         (0 -0.0015  -0.0398019798);
+        nPoints     5000;
+      }
+ 
+      line_y68
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0403960392);
+        end         (0 -0.0015  -0.0403960392);
+        nPoints     5000;
+      }
+ 
+      line_y69
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0409900986);
+        end         (0 -0.0015  -0.0409900986);
+        nPoints     5000;
+      }
+ 
+      line_y70
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0415841580);
+        end         (0 -0.0015  -0.0415841580);
+        nPoints     5000;
+      }
+ 
+      line_y71
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0421782174);
+        end         (0 -0.0015  -0.0421782174);
+        nPoints     5000;
+      }
+ 
+      line_y72
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0427722768);
+        end         (0 -0.0015  -0.0427722768);
+        nPoints     5000;
+      }
+ 
+      line_y73
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0433663362);
+        end         (0 -0.0015  -0.0433663362);
+        nPoints     5000;
+      }
+ 
+      line_y74
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0439603956);
+        end         (0 -0.0015  -0.0439603956);
+        nPoints     5000;
+      }
+ 
+      line_y75
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0445544550);
+        end         (0 -0.0015  -0.0445544550);
+        nPoints     5000;
+      }
+ 
+      line_y76
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0451485144);
+        end         (0 -0.0015  -0.0451485144);
+        nPoints     5000;
+      }
+ 
+      line_y77
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0457425738);
+        end         (0 -0.0015  -0.0457425738);
+        nPoints     5000;
+      }
+ 
+      line_y78
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0463366332);
+        end         (0 -0.0015  -0.0463366332);
+        nPoints     5000;
+      }
+ 
+      line_y79
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0469306926);
+        end         (0 -0.0015  -0.0469306926);
+        nPoints     5000;
+      }
+ 
+      line_y80
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0475247520);
+        end         (0 -0.0015  -0.0475247520);
+        nPoints     5000;
+      }
+ 
+      line_y81
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0481188114);
+        end         (0 -0.0015  -0.0481188114);
+        nPoints     5000;
+      }
+ 
+      line_y82
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0487128708);
+        end         (0 -0.0015  -0.0487128708);
+        nPoints     5000;
+      }
+ 
+      line_y83
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0493069302);
+        end         (0 -0.0015  -0.0493069302);
+        nPoints     5000;
+      }
+ 
+      line_y84
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0499009896);
+        end         (0 -0.0015  -0.0499009896);
+        nPoints     5000;
+      }
+ 
+      line_y85
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0504950490);
+        end         (0 -0.0015  -0.0504950490);
+        nPoints     5000;
+      }
+ 
+      line_y86
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0510891084);
+        end         (0 -0.0015  -0.0510891084);
+        nPoints     5000;
+      }
+ 
+      line_y87
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0516831678);
+        end         (0 -0.0015  -0.0516831678);
+        nPoints     5000;
+      }
+ 
+      line_y88
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0522772272);
+        end         (0 -0.0015  -0.0522772272);
+        nPoints     5000;
+      }
+ 
+      line_y89
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0528712866);
+        end         (0 -0.0015  -0.0528712866);
+        nPoints     5000;
+      }
+ 
+      line_y90
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0534653460);
+        end         (0 -0.0015  -0.0534653460);
+        nPoints     5000;
+      }
+ 
+      line_y91
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0540594054);
+        end         (0 -0.0015  -0.0540594054);
+        nPoints     5000;
+      }
+ 
+      line_y92
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0546534648);
+        end         (0 -0.0015  -0.0546534648);
+        nPoints     5000;
+      }
+ 
+      line_y93
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0552475242);
+        end         (0 -0.0015  -0.0552475242);
+        nPoints     5000;
+      }
+ 
+      line_y94
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0558415836);
+        end         (0 -0.0015  -0.0558415836);
+        nPoints     5000;
+      }
+ 
+      line_y95
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0564356430);
+        end         (0 -0.0015  -0.0564356430);
+        nPoints     5000;
+      }
+ 
+      line_y96
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0570297024);
+        end         (0 -0.0015  -0.0570297024);
+        nPoints     5000;
+      }
+ 
+      line_y97
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0576237618);
+        end         (0 -0.0015  -0.0576237618);
+        nPoints     5000;
+      }
+ 
+      line_y98
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0582178212);
+        end         (0 -0.0015  -0.0582178212);
+        nPoints     5000;
+      }
+ 
+      line_y99
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0588118806);
+        end         (0 -0.0015  -0.0588118806);
+        nPoints     5000;
+      }
+ 
+      line_y100
+      {
+        type        lineUniform;
+        axis        distance;
+        start       (0  0.0015  -0.0594059400);
+        end         (0 -0.0015  -0.0594059400);
+        nPoints     5000;
+      }
+ 
+);
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *//

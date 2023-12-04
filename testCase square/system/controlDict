@@ -1,0 +1,3239 @@
+/*--------------------------------*- C++ -*----------------------------------*  =========                 |
+  \      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \    /   O peration     | Website:  https://openfoam.org
+    \  /    A nd           | Version:  8
+     \/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    system;
+    object      controlDict;
+}
+/*---------------------------------------------------------------------------*/
+
+application     twoLiquidMixingFoam;
+
+startFrom       startTime;
+
+startTime       0;
+
+stopAt          endTime;
+
+endTime         0.5;
+
+deltaT          0.0001;
+
+writeControl    adjustableRunTime;
+
+writeInterval   0.125;
+
+purgeWrite      0;
+
+writeFormat     ascii;
+
+writePrecision  16;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   16;
+
+runTimeModifiable yes;
+
+adjustTimeStep  on;
+
+maxCo           0.95;
+maxAlphaCo      0.25;
+maxDeltaT       0.001;
+
+functions
+{
+  #includeFunc residuals
+  #includeFunc yPlus
+  volFieldValue1
+  {
+    // Mandatory entries (unmodifiable)
+    type            volFieldValue;
+    libs            ("libfieldFunctionObjects.so");
+    log             true;
+    writeControl    writeTime;
+    writeFields     false;
+    
+    // Mandatory entries (runtime modifiable)
+    fields          ("epsilon" "k" "alpha.A");
+    operation       volAverage;
+    regionType      all;
+    } 
+     /*section1
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection1;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0015000150 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section2
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection2;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0030000300 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section3
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection3;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0045000450 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section4
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection4;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0060000600 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section5
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection5;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0075000750 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section6
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection6;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0090000900 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section7
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection7;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0105001050 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section8
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection8;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0120001200 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section9
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection9;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0135001350 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section10
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection10;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0150001500 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section11
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection11;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0165001650 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section12
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection12;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0180001800 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section13
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection13;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0195001950 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section14
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection14;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0210002100 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section15
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection15;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0225002250 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section16
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection16;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0240002400 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section17
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection17;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0255002550 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section18
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection18;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0270002700 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section19
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection19;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0285002850 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section20
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection20;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0300003000 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section21
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection21;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0315003150 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section22
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection22;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0330003300 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section23
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection23;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0345003450 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section24
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection24;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0360003600 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section25
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection25;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0375003750 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section26
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection26;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0390003900 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section27
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection27;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0405004050 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section28
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection28;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0420004200 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section29
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection29;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0435004350 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section30
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection30;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0450004500 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section31
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection31;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0465004650 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section32
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection32;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0480004800 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section33
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection33;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0495004950 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section34
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection34;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0510005100 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section35
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection35;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0525005250 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section36
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection36;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0540005400 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section37
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection37;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0555005550 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section38
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection38;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0570005700 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section39
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection39;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0585005850 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section40
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection40;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0600006000 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section41
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection41;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0615006150 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section42
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection42;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0630006300 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section43
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection43;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0645006450 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section44
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection44;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0660006600 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section45
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection45;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0675006750 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section46
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection46;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0690006900 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section47
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection47;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0705007050 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section48
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection48;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0720007200 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section49
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection49;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0735007350 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section50
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection50;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0750007500 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section51
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection51;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0765007650 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section52
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection52;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0780007800 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section53
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection53;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0795007950 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section54
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection54;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0810008100 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section55
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection55;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0825008250 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section56
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection56;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0840008400 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section57
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection57;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0855008550 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section58
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection58;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0870008700 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section59
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection59;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0885008850 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section60
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection60;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0900009000 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section61
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection61;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0915009150 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section62
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection62;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0930009300 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section63
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection63;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0945009450 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section64
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection64;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0960009600 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section65
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection65;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0975009750 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section66
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection66;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.0990009900 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section67
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection67;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.1005010050 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section68
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection68;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.1020010200 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section69
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection69;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.1035010350 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section70
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection70;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.1050010500 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section71
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection71;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.1065010650 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section72
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection72;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.1080010800 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section73
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection73;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.1095010950 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section74
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection74;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.1110011100 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section75
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection75;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.1125011250 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section76
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection76;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.1140011400 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section77
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection77;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.1155011550 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section78
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection78;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.1170011700 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section79
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection79;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.1185011850 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section80
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection80;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.1200012000 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section81
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection81;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.1215012150 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section82
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection82;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.1230012300 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section83
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection83;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.1245012450 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section84
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection84;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.1260012600 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section85
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection85;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.1275012750 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section86
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection86;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.1290012900 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section87
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection87;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.1305013050 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section88
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection88;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.1320013200 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section89
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection89;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.1335013350 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section90
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection90;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.1350013500 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section91
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection91;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.1365013650 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section92
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection92;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.1380013800 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section93
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection93;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.1395013950 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section94
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection94;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.1410014100 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section95
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection95;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.1425014250 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section96
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection96;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.1440014400 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section97
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection97;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.1455014550 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section98
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection98;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.1470014700 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }
+   
+     section99
+     {
+         type            surfaceFieldValue;
+         libs            ("libfieldFunctionObjects.so");
+ 
+         log             true;
+         writeControl    writeTime;
+         writeFields     true;
+ 
+         surfaceFormat   none; 
+         regionType      sampledSurface;
+         name            samplingSection99;
+ 
+ 	 sampledSurfaceDict
+         {
+               type        plane;               
+		planeType pointAndNormal;
+	        pointAndNormalDict
+		    {
+			basePoint       (0 -0.1485014850 0);
+			normal          (0 1 0);
+		    }
+	 }
+ 
+         operation       average;
+ 
+         fields
+         (
+             NaOH
+         );
+     }*/
+}
+    // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *//
