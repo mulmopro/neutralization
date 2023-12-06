@@ -13,15 +13,26 @@ Two geometries (D<sub>h</sub> = 3 mm) are investigated both experimentally and n
 # Reference
 Should you use these codes for your own research, we would greatly appreciate if you could cite our work:
 
-G. Battaglia, S. Romano, A. Raponi, F. Volpe, L. Bellanca, M. Ciofalo, D. Marchisio, A. Cipollina, G. Micale, A. Tamburini, Mixing phenomena in Circular and Rectangular cross-sectional T-mixers: experimental and numerical assessment, Chemical Engineering Research and Design, 2023, doi = https://doi.org/10.1016/j.cherd.2023.11.056
+G. Battaglia, S. Romano, A. Raponi, F. Volpe, L. Bellanca, M. Ciofalo, D. Marchisio, A. Cipollina, G. Micale, A. Tamburini,
+Mixing phenomena in circular and rectangular cross-sectional T-mixers: Experimental and numerical assessment,
+Chemical Engineering Research and Design,
+Volume 201,
+2024,
+Pages 228-241,
+ISSN 0263-8762,
+https://doi.org/10.1016/j.cherd.2023.11.056.
+(https://www.sciencedirect.com/science/article/pii/S0263876223007669)
 
 ## BibTeX entry
-@article{Battaglia2023,
-   author = {G. Battaglia and S. Romano and A. Raponi and F. Volpe and L. Bellanca and M. Ciofalo and D. Marchisio and A. Cipollina and G. Micale and A. Tamburini},
-   doi = {10.1016/j.cherd.2023.11.056},
-   issn = {02638762},
-   journal = {Chemical Engineering Research and Design},
-   month = {11},
-   title = {Mixing phenomena in Circular and Rectangular cross-sectional T-mixers: experimental and numerical assessment},
-   year = {2023},
+@article{BATTAGLIA2024228,
+title = {Mixing phenomena in circular and rectangular cross-sectional T-mixers: Experimental and numerical assessment},
+journal = {Chemical Engineering Research and Design},
+volume = {201},
+pages = {228-241},
+year = {2024},
+issn = {0263-8762},
+doi = {https://doi.org/10.1016/j.cherd.2023.11.056},
+url = {https://www.sciencedirect.com/science/article/pii/S0263876223007669},
+author = {G. Battaglia and S. Romano and A. Raponi and F. Volpe and L. Bellanca and M. Ciofalo and D. Marchisio and A. Cipollina and G. Micale and A. Tamburini},
+keywords = {T-mixer, Digital image analysis, RANS k- ε tuning, Mixing, Asymmetric flow rates}
 }
