@@ -10,8 +10,9 @@ The experimental setup is reported:
 ![image](https://github.com/mulmopro/neutralization/assets/102947817/dece5b56-0b70-4d40-bc49-6329281196e9)
 Two geometries (D<sub>h</sub> = 3 mm) are investigated both experimentally and numerically: the former is a square cross-sectional T-mixer (T<sub>sq</sub>), the latter is a circular cross-sectional T-mixer (T<sub>cr</sub>)
 
+
 # Reference
-Should you use these codes for your own research, we would greatly appreciate if you could cite our work:
+Should you use these codes for your own research, we would greatly appreciate if you could cite our work (https://www.sciencedirect.com/science/article/pii/S0263876223007669):
 
 G. Battaglia, S. Romano, A. Raponi, F. Volpe, L. Bellanca, M. Ciofalo, D. Marchisio, A. Cipollina, G. Micale, A. Tamburini,
 Mixing phenomena in circular and rectangular cross-sectional T-mixers: Experimental and numerical assessment,
@@ -35,5 +36,3 @@ url = {https://www.sciencedirect.com/science/article/pii/S0263876223007669},
 author = {G. Battaglia and S. Romano and A. Raponi and F. Volpe and L. Bellanca and M. Ciofalo and D. Marchisio and A. Cipollina and G. Micale and A. Tamburini},
 keywords = {T-mixer, Digital image analysis, RANS k- ε tuning, Mixing, Asymmetric flow rates}
 }
-
-(https://www.sciencedirect.com/science/article/pii/S0263876223007669)
