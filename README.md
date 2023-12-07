@@ -12,7 +12,7 @@ Two geometries (D<sub>h</sub> = 3 mm) are investigated both experimentally and n
 
 
 # Reference
-Should you use these codes for your own research, we would greatly appreciate if you could cite our work (https://www.sciencedirect.com/science/article/pii/S0263876223007669):
+Should you use these codes for your own research, we would greatly appreciate if you could cite our work:
 
 G. Battaglia, S. Romano, A. Raponi, F. Volpe, L. Bellanca, M. Ciofalo, D. Marchisio, A. Cipollina, G. Micale, A. Tamburini,
 Mixing phenomena in circular and rectangular cross-sectional T-mixers: Experimental and numerical assessment,
