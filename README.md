@@ -21,7 +21,6 @@ Volume 201,
 Pages 228-241,
 ISSN 0263-8762,
 https://doi.org/10.1016/j.cherd.2023.11.056.
-(https://www.sciencedirect.com/science/article/pii/S0263876223007669)
 
 ## BibTeX entry
 @article{BATTAGLIA2024228,
@@ -36,3 +35,5 @@ url = {https://www.sciencedirect.com/science/article/pii/S0263876223007669},
 author = {G. Battaglia and S. Romano and A. Raponi and F. Volpe and L. Bellanca and M. Ciofalo and D. Marchisio and A. Cipollina and G. Micale and A. Tamburini},
 keywords = {T-mixer, Digital image analysis, RANS k- ε tuning, Mixing, Asymmetric flow rates}
 }
+
+(https://www.sciencedirect.com/science/article/pii/S0263876223007669)
